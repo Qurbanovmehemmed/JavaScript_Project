@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.register {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.submit{
+    width: 100%;
+    margin-top: 20px;
+}

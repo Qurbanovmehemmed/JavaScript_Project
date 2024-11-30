@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/products.css" />
+    <title>Products</title>
+  </head>
+  <body>
+    <header id="start">
+      <div class="container">
+        <div class="row">
+          <div class="header_top col-lg-12 col-md-12 col-sm-12">
+            <div class="headtext">
+              <div class="contact">
+                <img src="./assets/icons/phone-call (3) 1@2x.png" alt="" /><span
+                  >+748 383 23 14</span
+                >
+              </div>
+              <div class="service">
+                <div><a href="">Term of Use</a></div>
+                <div><a href="" id="faq">FAQ</a></div>
+                <div><a href="">Customer service</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <nav class="mynavbar col-lg-12 col-md-12 col-sm-12">
+          <div class="logo">Snobella</div>
+
+          <div class="search-box">
+            <input
+              placeholder="Search all product"
+              type="text"
+              class="search-input"
+            />
+            <button class="btn btn-transparent search-btn">
+              <img src="./assets/icons/search.png" alt="" />
+            </button>
+            <ul class="search-results"></ul>
+          </div>
+
+          <!-- <ul class="nav_list">
+              <li class="nav_list-item"><a href="./admin.html">Admin</a></li>
+            </ul> -->
+          <div class="wrapper">
+            <button class="username">Username</button>
+            <div class="dropdown">
+              <button
+                class="btn btn-white newB"
+                type="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fa-regular fa-user"></i>
+                Sign Up
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item register" href="register.html"
+                    >Register</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item login" href="login.html">Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item logout d-none" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+            <a href="wishlist.html"
+              ><i class="fa-regular fa-heart wishlistpageicon"></i>Wishlist</a
+            >
+            <a href="basket.html" class="basketIcon">
+              <i class="fa-solid fa-cart-shopping basketpageicon"></i>
+              <sup>0</sup>
+              Basket</a
+            >
+          </div>
+        </nav>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="products">
+            <div>Evening bags</div>
+            <div>Shoulder bag</div>
+            <div>Backpack</div>
+            <div>Handbag</div>
+            <div>Postman bag</div>
+            <div>Belt bags</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- !filter -->
+
+      <!-- <div class="row">
+          <div class="control-panel">
+            <div>
+              <button class="btn btn-primary az" type="button">A-Z</button>
+              <button class="btn btn-primary za" type="button">Z-A</button>
+            </div>
+            <div class="search-box">
+              <input placeholder="search..." type="text" class="search-input" />
+              <button type="" class="btn btn-success search-btn">Search</button>
+            </div>
+            <div>
+              <button class="btn btn-info low-to-high" type="button">
+                Low-to-High
+              </button>
+              <button class="btn btn-info high-to-low" type="button">
+                High-to-LoW
+              </button>
+            </div>
+          </div>
+        </div> -->
+    </div>
+    <section id="headAreaProduct">
+      <div class="container">
+        <div class="row">
+          <div class="headAreaProduct">
+            <a href="index.html" class="home">Home</a>
+            
+            <i class="fa-solid fa-chevron-right add"></i>
+            <span class="shoulder">Shoulder Bags</span>
+            <h1 class="headtextProduct">Shoulder bags</h1>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="container">
+        <div class="row">
+
+            <div class="filterButton">
+
+            <div class="dropdown control-panel">
+                <button class="btn bg-white border border-dark text-dark dropdown-toggle myBut" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Featured
+                  </button>
+                <ul class="dropdown-menu">
+                    <button class="btn btn-primary az" type="button">A-Z</button>
+                    <button class="btn btn-primary za" type="button">Z-A</button>
+                    <div>
+                        <button class="btn btn-info low-to-high" type="button">
+                          Low-to-High
+                        </button>
+                        <button class="btn btn-info high-to-low" type="button">
+                          High-to-LoW
+                        </button>
+                      </div>
+                </ul>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      <!-- <div class="container">
+        <div class="row">
+          <div class="control-panel">
+            <div>
+              <button class="btn btn-primary az" type="button">A-Z</button>
+              <button class="btn btn-primary za" type="button">Z-A</button>
+            </div>
+            <div class="search-box">
+            
+            </div>
+            <div>
+              <button class="btn btn-info low-to-high" type="button">
+                Low-to-High
+              </button>
+              <button class="btn btn-info high-to-low" type="button">
+                High-to-LoW
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+    </section>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="mainLeft col-lg-3">
+            <ul class="list-group">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                <span class="categories">Categories</span>
+                <i class="fa-solid fa-chevron-up"></i>
+              </li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+              <li class="list-group-item">A fourth item</li>
+              <li class="list-group-item">And a fifth one</li>
+              <li class="list-group-item">And a fifth one</li>
+              <li class="list-group-item">And a fifth one</li>
+            </ul>
+
+            <ul class="list-group mt-4">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                <span class="categories">Materials</span>
+                <i class="fa-solid fa-chevron-up"></i>
+              </li>
+
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="firstCheckbox"
+                />
+                <label class="form-check-label" for="firstCheckbox"
+                  >Cloth</label
+                >
+              </li>
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="secondCheckbox"
+                />
+                <label class="form-check-label" for="secondCheckbox"
+                  >Cotton</label
+                >
+              </li>
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="thirdCheckbox"
+                />
+                <label class="form-check-label" for="thirdCheckbox"
+                  >Denim - Jeans</label
+                >
+              </li>
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="thirdCheckbox"
+                />
+                <label class="form-check-label" for="thirdCheckbox"
+                  >Exotic Leathers</label
+                >
+              </li>
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="thirdCheckbox"
+                />
+                <label class="form-check-label" for="thirdCheckbox"
+                  >Faux Fur</label
+                >
+              </li>
+              <li class="list-group-item">
+                <input
+                  class="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  id="thirdCheckbox"
+                />
+                <label class="form-check-label" for="thirdCheckbox"
+                  >Glitter</label
+                >
+              </li>
+            </ul>
+
+            <ul class="list-group mt-4 pb-5">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                <span class="categories">Materials</span>
+                <i class="fa-solid fa-chevron-up"></i>
+              </li>
+              <div class=" priceArea  d-flex justify-content-center align-items-center">
+                <input type="number" class="numPrice" placeholder="$10" /> -
+                <input type="number" class="numPrice" placeholder="$50"/>
+                <button class="redSearch"><img src="./assets/icons/whiSea.png" alt=""></button>
+              </div>
+            </ul>
+
+            <ul class="list-group mt-4 pb-5">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <span class="categories">Size</span>
+                  <i class="fa-solid fa-chevron-up"></i>
+                </li>
+                <div class=" priceArea  d-flex justify-content-center align-items-center">
+                    <button class="whiteSearch">XS</button>
+                    <button class="whiteSearch">S</button>
+                  <button class="whiteSearch">M</button>
+                </div>
+              </ul>
+
+
+              <ul class="list-group mt-4 pb-5">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <span class="categories">Color</span>
+                  <i class="fa-solid fa-chevron-up"></i>
+                </li>
+           <div class="circleArea d-flex">
+            <div class="circle" style="background-color: #275240;"></div>
+            <div class="circle" style="background-color: #0085FF;"></div>
+            <div class="circle" style="background-color: #3D2A33;"></div>
+            <div class="circle" style="background-color: #773838;"></div>
+            <div class="circle" style="background-color: #000000;"></div>
+            <div class="circle" style="background-color: #307E46;"></div>
+            <div class="circle" style="background-color: #0085FF;"></div>
+
+
+            <div class="circle" style="background-color: #FF6B00;"></div>
+            <div class="circle" style="background-color: #D6B73B;"></div>
+            <div class="circle" style="background-color: #7C4DFF;"></div>
+            <div class="circle" style="background-color: #F75145;"></div>
+            <div class="circle" style="background-color: #842759;"></div>
+            <div class="circle" style="background-color: #895C31;"></div>
+           </div>
+
+            
+              </ul>
+
+
+          </div>
+          <div class="mainRight col-lg-9">
+            b
+            <div class="cards"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="footHead">
+              <h1 class="footHeadText">Snobella</h1>
+            </div>
+          </div>
+        </div>
+        <section id="footBottom">
+          <div class="container">
+            <div class="row">
+              <div class="footBottomLeft col-lg-6 col-md-12 col-sm-12">
+                <p class="botText">
+                  The wise man therefore always holds selectionThe wise man
+                  therefore always rejects pleasures to secure other greater
+                </p>
+  
+                <div class="message">
+                  <img
+                    class="dark"
+                    src="./assets/icons/4891c2ce-40f6-4791-a65a-ad24f354608e.png"
+                    alt=""
+                  />
+                  Snobella@gmail.com
+                </div>
+                <div class="phone">
+                  <img
+                    src="./assets/icons/1f891ba3-47d1-4374-9222-c2dc7dba0353.png"
+                    alt=""
+                  />
+                  +748 383 23 14
+                </div>
+                <div class="sendMessege">
+                  <img
+                    src="./assets/icons/435d446c-c5a5-49ba-89a6-edcee69fc88d.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="footBottomRight col-lg-6 col-md-12 col-sm-12">
+                <div class="row">
+                  <div class="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p class="dark">Shop</p>
+                    <p class="light">Shoulder Bag</p>
+                    <p class="light">Backpack</p>
+                    <p class="light">Tote Bag</p>
+                    <p class="light">Hand Bag</p>
+                    <p class="light">Evening bags</p>
+                    <p class="light">Purse</p>
+                  </div>
+                  <div class="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p class="dark">Company</p>
+                    <p class="light">About us</p>
+                    <p class="light">Contact</p>
+                    <p class="light">Terms of Use</p>
+                    <p class="light">Customer service</p>
+                  </div>
+                  <div class="shopCampanyHelp col-lg-4 col-md-12 col-sm-12">
+                    <p class="dark">Help</p>
+                    <p class="light">FAQ</p>
+                    <p class="light">Delivery</p>
+                    <p class="light">Cancellation of the order</p>
+                    <p class="light">Don't go back</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="footLast">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-12 col-sm-12" style="color: #212121bf">
+                © 2020. All rights reserved.
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12 textLeft">
+                <a href=""
+                  ><img class="follow" src="./assets/icons/insat.png" alt=""
+                /></a>
+                <a href=""
+                  ><img class="follow" src="./assets/icons/face.png" alt=""
+                /></a>
+  
+                <a href=""
+                  ><img class="follow" src="./assets/icons/whats.png" alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </footer>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="./assets/js/products.js"></script>
+  </body>
+</html>
