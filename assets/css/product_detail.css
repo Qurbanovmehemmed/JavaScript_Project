@@ -199,8 +199,11 @@ text-decoration-skip-ink: none;
   background-color: #F9F9F9;
 }
 .innerImgPro{
-
+padding: 20px;
   border-right: 1px solid #e4e4e4;
+}
+.innerImgProx{
+  padding: 20px;
 }
 
 

@@ -35,7 +35,6 @@ function createBasketItem() {
 
       let minusBtn = document.createElement("button");
       minusBtn.classList.add("minus-btn");
-      // minusBtn.setAttribute("disabled", "true");
       if (product.count === 1) {
         minusBtn.setAttribute("disabled", "true");
       }
@@ -56,32 +55,51 @@ function createBasketItem() {
       plusBtn.addEventListener("click", () =>
         incrementCount(product.id, count, price, minusBtn)
       );
-      // 1
+
       let titlePrice = document.createElement("div");
       titlePrice.classList.add("title-price");
       titlePrice.append(title, price);
 
+      // Remove Button
       let removeBtn = document.createElement("button");
-      removeBtn.classList.add("btn", "btn-danger", "remove-btn");
-      removeBtn.textContent = "Remove";
+      removeBtn.classList.add("btn", "btn-white", "remove-btn");
+      removeBtn.textContent = "🗑️ Remove";
       removeBtn.addEventListener("click", () => removeProduct(product.id));
-      // 2
+
+      // Wishlist Button (Heart Icon)
+      let wishlistBtn = document.createElement("button");
+      wishlistBtn.classList.add("btn", "btn-white", "wishlist-btn");
+      let heartIcon = document.createElement("i");
+      heartIcon.classList.add("fa-regular", "fa-heart","favIcon");
+      let favoriteText = document.createElement("span")
+      favoriteText.classList.add("favorite")
+      favoriteText.textContent = "Favorite";
+      wishlistBtn.append(heartIcon,favoriteText);
+      wishlistBtn.addEventListener("click", () =>
+        toggleAddWishlist(product.id, heartIcon)
+      );
+
+      // Category and Count
       let categoryCount = document.createElement("div");
       categoryCount.classList.add("category-count");
       categoryCount.append(category, countArea);
-      // 3
-      let removeBtnArea =document.createElement("div")
-      removeBtnArea.classList.add("remove-btn-area");
-      removeBtnArea.append(removeBtn);
-      let cardInfo =document.createElement("div")
-      cardInfo.classList.add("cardInfo")
-      cardInfo.append( titlePrice,categoryCount, removeBtnArea);
 
+      // Button Area (Remove and Wishlist buttons)
+      let removeBtnArea = document.createElement("div");
+      removeBtnArea.classList.add("remove-btn-area");
+      removeBtnArea.append(wishlistBtn,removeBtn, );
+
+      
+
+      let cardInfo = document.createElement("div");
+      cardInfo.classList.add("cardInfo");
+      cardInfo.append(titlePrice, categoryCount, removeBtnArea);
+
+      // Append elements
       countArea.append(minusBtn, count, plusBtn);
       image.append(img);
       basketItem.append(image, cardInfo);
 
-      let basketContainer = document.querySelector(".basket");
       basketContainer.append(basketItem);
 
       img.src = product.image;
@@ -91,11 +109,84 @@ function createBasketItem() {
       count.textContent = product.count;
 
       let newPrice = product.price * product.count;
-      price.textContent = `$ ${newPrice.toFixed(2)}`;
+      price.textContent = `US $ ${newPrice.toFixed(2)}`;
     });
   }
+
+  let clearBasketBtn = document.createElement("button");
+clearBasketBtn.classList.add("btn","btn-outline-danger","clearAll");
+clearBasketBtn.textContent = "Clear Basket";
+
+clearBasketBtn.addEventListener("click", clearBasket);
+
+function clearBasket() {
+  
+  basket = [];
+
+  
+  let basketItems = document.querySelectorAll(".basket-item");
+  basketItems.forEach(item => item.remove());
+
+  
+  let userIndex = users.findIndex((user) => user.id === currentUser.id);
+  users[userIndex].basket = [];
+  localStorage.setItem("users", JSON.stringify(users));
+
+  
   updateTotalPrice();
 }
+let bottom = document.querySelector(".bottom")
+bottom.appendChild(clearBasketBtn);
+  updateTotalPrice();
+}
+
+
+function toggleAddWishlist(productId, heartElement) {
+  if (!currentUser) {
+    toast("Please login to add to wishlist");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 2000);
+    return;
+  }
+
+  let userIndex = users.findIndex((user) => user.id === currentUser.id);
+
+  if (currentUser.wishList.some((item) => item.id === productId)) {
+    let productIndex = currentUser.wishList.findIndex(
+      (product) => product.id === productId
+    );
+    currentUser.wishList.splice(productIndex, 1);
+    users[userIndex] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    heartElement.classList.remove("fa-solid");
+    heartElement.classList.add("fa-regular");
+    heartElement.style.color="#212121"
+    let favorite =document.querySelectorAll(".favorite")
+    favorite.forEach(element => {
+element.style.color="#212121"      
+    });
+
+    toast("Product removed from wishlist");
+  } else {
+    let product = basket.find((product) => product.id === productId);
+    currentUser.wishList.push(product);
+    users[userIndex] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+
+    heartElement.classList.remove("fa-regular");
+    heartElement.classList.add("fa-solid");
+    heartElement.style.color="#DF4244"
+    let favorite =document.querySelectorAll(".favorite")
+    favorite.forEach(element => {
+      element.style.color="#DF4244"      
+          });
+
+    toast("Product added to wishlist");
+  }
+}
+
 
 function incrementCount(
   productId,
@@ -176,6 +267,15 @@ function removeProduct(productId) {
   }
 }
 
+document.querySelector(".confirm").addEventListener("click", () => {
+  if (basket.length === 0) {
+    toast("Basket is empty!");
+  } else {
+    console.log("Products in the basket:", basket);
+    toast("Proceeding with the basket...");
+  }
+});
+
 function toast(text) {
   Toastify({
     text: `${text}`,
@@ -191,6 +291,9 @@ function toast(text) {
 document.addEventListener("DOMContentLoaded", createBasketItem());
 
 
+
+
+//! nav
 document.addEventListener("DOMContentLoaded", async () => {
   let users = JSON.parse(localStorage.getItem("users")) || [];
 

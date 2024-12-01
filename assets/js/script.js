@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   logoutBtn.addEventListener("click", logout);
 
   function createUserCard(filteredProducts) {
-    filteredProducts.slice(0,3).forEach((product) => {
+    filteredProducts.slice(0,0).forEach((product) => {
       let card = document.createElement("div");
       card.classList.add("card");
       card.addEventListener("click", () => {
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let currentUser = isLogined ? isLogined : null;
 
     document.querySelector(".cards").innerHTML = ""; 
-    productsToRender.slice(0,).forEach((product) => {
+    productsToRender.slice(0,3).forEach((product) => {
       let card = document.createElement("div");
       card.classList.add("card");
 
