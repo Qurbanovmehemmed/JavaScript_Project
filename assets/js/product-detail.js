@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let basket = currentUser?.basket || [];
   let wishlist = currentUser?.wishlist || [];
   
-  // Fetching products from the API
   const getProducts = async () => {
     let response = await axios.get("https://fakestoreapi.com/products");
     return response.data;
@@ -12,14 +11,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let products = await getProducts();
 
-  // Select DOM elements for the navbar
   let loginBtn = document.querySelector(".login");
   let registerBtn = document.querySelector(".register");
   let logoutBtn = document.querySelector(".logout");
   let usernameBtn = document.querySelector(".username");
   let basketIcon = document.querySelector(".basketIcon sup");
 
-  // Update the navbar based on login status
   function updateUserStatus() {
     if (currentUser) {
       usernameBtn.textContent = currentUser.username;
@@ -34,13 +31,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Update the basket count in the navbar
   function updateBasketCount() {
     let basketCount = currentUser?.basket.reduce((acc, item) => acc + item.count, 0) || 0;
     basketIcon.textContent = basketCount;
   }
 
-  // Handle logout action
   function logout() {
     if (currentUser) {
       currentUser.isLogined = false;
@@ -52,7 +47,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   logoutBtn.addEventListener("click", logout);
 
-  // Add product to the basket
   function addToBasket(productId) {
     if (!currentUser) {
       toast("Please log in to add items to your basket.");
@@ -86,7 +80,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateBasketCount();
   }
 
-  // Add or remove product from wishlist
   function toggleWishlist(productId, heartElement) {
     const productIndex = wishlist.findIndex((item) => item.id === productId);
     if (productIndex === -1) {
@@ -109,7 +102,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     localStorage.setItem("users", JSON.stringify(users));
   }
 
-  // Display product details page
   const URL = new URLSearchParams(location.search);
   const productId = URL.get("id");
   let findProduct = products.find((product) => product.id === parseInt(productId));
@@ -121,7 +113,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let productContainer = document.querySelector(".product-container");
 
-  // Product Image and Heart (Wishlist toggle)
   let productImageDiv = document.createElement("div");
   productImageDiv.classList.add("product-image");
 
@@ -143,7 +134,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     toggleWishlist(findProduct.id, heart);
   });
 
-  // Product Details Section
   let productDetailsDiv = document.createElement("div");
   productDetailsDiv.classList.add("product-details");
 
@@ -167,7 +157,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   productDescription.textContent = findProduct.description;
   productDetailsDiv.appendChild(productDescription);
 
-  // Quantity selector and Add to Cart button
   let quantitySelector = document.createElement("div");
   quantitySelector.classList.add("quantity-selector");
 
@@ -197,7 +186,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   productContainer.appendChild(productImageDiv);
   productContainer.appendChild(productDetailsDiv);
 
-  // Quantity update buttons
   btnMinus.addEventListener("click", () => {
     let currentValue = parseInt(quantityInput.value);
     if (currentValue > 1) {
@@ -210,7 +198,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     quantityInput.value = currentValue + 1;
   });
 
-  // Add product to cart
   addToCartBtn.addEventListener("click", () => {
     let quantity = parseInt(quantityInput.value);
     let totalPrice = quantity * findProduct.price;
@@ -248,20 +235,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //! card
 
-  // Filter products by the current product's category
 let relatedProducts = products.filter(
   (product) => product.category === findProduct.category && product.id !== findProduct.id
 );
 
-// Get the container to append related products
 let relatedProductsContainer = document.createElement("div");
 relatedProductsContainer.classList.add("related-products");
 
-// Heading for the related products section
 
 
 
-// Display the first 3 related products (or fewer if less than 3 available)
 relatedProducts.slice(0, 3).forEach((relatedProduct) => {
   let relatedProductDiv = document.createElement("div");
   relatedProductDiv.classList.add("related-product");
@@ -283,22 +266,18 @@ relatedProducts.slice(0, 3).forEach((relatedProduct) => {
   addToBasketBtn.classList.add("btn", "btn-secondary", "add-to-basket-btn");
   addToBasketBtn.textContent = "Add to Cart";
 
-  // Add functionality to add related product to basket
   addToBasketBtn.addEventListener("click", () => {
     addToBasket(relatedProduct.id);
   });
 
-  // Append product details to the related product div
   relatedProductDiv.appendChild(relatedProductImg);
   relatedProductDiv.appendChild(relatedProductTitle);
   relatedProductDiv.appendChild(relatedProductPrice);
   relatedProductDiv.appendChild(addToBasketBtn);
 
-  // Append the related product div to the container
   relatedProductsContainer.appendChild(relatedProductDiv);
 });
 
-// Append the related products section to the product container
 productContainer.appendChild(relatedProductsContainer);
 
 
@@ -327,7 +306,6 @@ productContainer.appendChild(relatedProductsContainer);
 
 
   
-  // Initial updates
   updateUserStatus();
   updateBasketCount();
 });
