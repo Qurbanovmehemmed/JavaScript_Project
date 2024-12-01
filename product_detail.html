@@ -17,9 +17,128 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/product_detail.css" />
   </head>
   <body>
+
+    <header id="start">
+      <div class="container">
+        <div class="row">
+          <div class="header_top col-lg-12 col-md-12 col-sm-12">
+            <div class="headtext">
+              <div class="contact">
+                <img src="./assets/icons/phone-call (3) 1@2x.png" alt="" /><span
+                  >+748 383 23 14</span
+                >
+              </div>
+              <div class="service">
+                <div><a href="">Term of Use</a></div>
+                <div><a href="" id="faq">FAQ</a></div>
+                <div><a href="">Customer service</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <nav class="mynavbar col-lg-12 col-md-12 col-sm-12">
+          <div class="logo">Snobella</div>
+
+          <div class="search-box">
+            <input
+              placeholder="Search all product"
+              type="text"
+              class="search-input"
+            />
+            <button class="btn btn-transparent search-btn">
+              <img src="./assets/icons/search.png" alt="" />
+            </button>
+            <ul class="search-results"></ul>
+          </div>
+
+          <!-- <ul class="nav_list">
+              <li class="nav_list-item"><a href="./admin.html">Admin</a></li>
+            </ul> -->
+          <div class="wrapper">
+            <button class="username">Username</button>
+            <div class="dropdown">
+              <button
+                class="btn btn-white newB"
+                type="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fa-regular fa-user"></i>
+                Sign Up
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item register" href="register.html"
+                    >Register</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item login" href="login.html">Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item logout d-none" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+            <a href="wishlist.html"
+              ><i class="fa-regular fa-heart wishlistpageicon"></i>Wishlist</a
+            >
+            <a href="basket.html" class="basketIcon">
+              <i class="fa-solid fa-cart-shopping basketpageicon"></i>
+              <sup>0</sup>
+              Basket</a
+            >
+          </div>
+        </nav>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="products">
+            <div>Evening bags</div>
+            <div>Shoulder bag</div>
+            <div>Backpack</div>
+            <div>Handbag</div>
+            <div>Postman bag</div>
+            <div>Belt bags</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- !filter -->
+
+      <!-- <div class="row">
+          <div class="control-panel">
+            <div>
+              <button class="btn btn-primary az" type="button">A-Z</button>
+              <button class="btn btn-primary za" type="button">Z-A</button>
+            </div>
+            <div class="search-box">
+              <input placeholder="search..." type="text" class="search-input" />
+              <button type="" class="btn btn-success search-btn">Search</button>
+            </div>
+            <div>
+              <button class="btn btn-info low-to-high" type="button">
+                Low-to-High
+              </button>
+              <button class="btn btn-info high-to-low" type="button">
+                High-to-LoW
+              </button>
+            </div>
+          </div>
+        </div> -->
+    </div>
+
+
+
+
     <header>
       <h1>Product Detail</h1>
     </header>
@@ -38,7 +157,7 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-
+    <!-- <script src="./assets/js/products.js"></script> -->
     <script type="module" src="./assets/js/product-detail.js"></script>
   </body>
 </html>

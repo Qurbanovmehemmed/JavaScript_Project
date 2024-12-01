@@ -143,3 +143,110 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error fetching products: ", error);
   }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const getProducts = async () => {
+    let response = await axios("https://fakestoreapi.com/products");
+    let products = response.data;
+    return products;
+  };
+  let products = await getProducts();
+  
+
+  let loginBtn = document.querySelector(".login");
+  let registerBtn = document.querySelector(".register");
+  let logoutBtn = document.querySelector(".logout");
+  let curentUser = users.find((user) => user.isLogined === true);
+
+
+
+  
+
+
+
+
+  
+
+
+  function updateUserStatus() {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let isLogined = users.find((user) => user.isLogined === true);
+    let usernameBtn = document.querySelector(".username");
+    if (isLogined) {
+      usernameBtn.textContent = isLogined.username;
+      loginBtn.classList.add("d-none");
+      registerBtn.classList.add("d-none");
+      logoutBtn.classList.remove("d-none");
+    } else {
+      logoutBtn.classList.add("d-none");
+      loginBtn.classList.remove("d-none");
+      registerBtn.classList.remove("d-none");
+      usernameBtn.textContent = "Username";
+    }
+  }
+
+  function logout() {
+    if (curentUser) {
+      curentUser.isLogined = false;
+      localStorage.setItem("users", JSON.stringify(users));
+      updateUserStatus();
+    }
+  }
+
+  logoutBtn.addEventListener("click", logout);
+
+  
+
+  function addBasket(productId) {
+    if (!curentUser) {
+      toast("Please login to add basket");
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1000);
+    }
+
+    let userIndex = users.findIndex((user) => user.id === curentUser.id);
+
+    if (userIndex === -1) {
+      toast("User not found");
+      return;
+    }
+    let basket = curentUser.basket || [];
+    let exsistProduct = basket.find((product) => product.id === productId);
+
+    if (exsistProduct) {
+      exsistProduct.count++;
+    } else {
+      let product = products.find((product) => product.id === productId);
+      if (product) {
+        curentUser.basket.push({ ...product, count: 1 });
+      }
+    }
+    toast("Product added to basket");
+    users[userIndex] = curentUser;
+    localStorage.setItem("users", JSON.stringify(users));
+    updateBasketCount();
+  }
+
+  function updateBasketCount() {
+    let basketElement = document.querySelector(".basketIcon sup");
+    let basketCount = curentUser?.basket.reduce(
+      (acc, product) => acc + product.count,
+      0
+    );
+    basketElement.textContent = basketCount;
+  }
+
+ 
+  
+
+
+
+ 
+  updateBasketCount();
+  updateUserStatus();
+});

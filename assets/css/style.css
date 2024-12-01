@@ -141,7 +141,7 @@ a {
   border: none;
   padding: 6px 10px;
   border-radius: 5px;
-  background: #fff;
+  background: transparent;
 }
 .mynavbar .wrapper .basketIcon {
   position: relative;
