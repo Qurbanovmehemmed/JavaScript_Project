@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let currentUser = isLogined ? isLogined : null;
 
     document.querySelector(".cards").innerHTML = ""; 
-    productsToRender.forEach((product) => {
+    productsToRender.slice(0,).forEach((product) => {
       let card = document.createElement("div");
       card.classList.add("card");
 
