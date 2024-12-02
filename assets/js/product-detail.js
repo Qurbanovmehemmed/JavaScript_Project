@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       localStorage.setItem("users", JSON.stringify(users));
       updateUserStatus();
       updateBasketCount();
+      window.location.reload()
     }
   }
 
@@ -245,6 +246,7 @@ relatedProductsContainer.classList.add("related-products");
 
 
 
+// Related products yaradılarkən Wishlist funksiyasını əlavə edirik
 relatedProducts.slice(0, 3).forEach((relatedProduct) => {
   let relatedProductDiv = document.createElement("div");
   relatedProductDiv.classList.add("related-product");
@@ -256,7 +258,7 @@ relatedProducts.slice(0, 3).forEach((relatedProduct) => {
 
   let relatedProductTitle = document.createElement("p");
   relatedProductTitle.classList.add("related-product-title");
-  relatedProductTitle.textContent = relatedProduct.title.slice(0,30)+" ...";
+  relatedProductTitle.textContent = relatedProduct.title.slice(0, 30) + " ...";
 
   let relatedProductPrice = document.createElement("p");
   relatedProductPrice.classList.add("related-product-price");
@@ -266,17 +268,101 @@ relatedProducts.slice(0, 3).forEach((relatedProduct) => {
   addToBasketBtn.classList.add("btn", "btn-secondary", "add-to-basket-btn");
   addToBasketBtn.textContent = "Add to Cart";
 
+  // Heart icon for Wishlist
+  let heart = document.createElement("i");
+  heart.classList.add("fa-regular", "fa-heart", "related-heart");
+
+  // Check if product is in the wishlist
+  if (wishlist.some((item) => item.id === relatedProduct.id)) {
+    heart.classList.add("fa-solid");
+  }
+
+  heart.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevents the click event from triggering the cart click
+    toggleWishlist(relatedProduct.id, heart);
+  });
+
   addToBasketBtn.addEventListener("click", () => {
     addToBasket(relatedProduct.id);
   });
 
+  // Redirect to product detail page on product click
+  relatedProductDiv.addEventListener("click", () => {
+    window.location.href = `product_detail.html?id=${relatedProduct.id}`;
+  });
+
+  // Append everything
   relatedProductDiv.appendChild(relatedProductImg);
   relatedProductDiv.appendChild(relatedProductTitle);
   relatedProductDiv.appendChild(relatedProductPrice);
+  relatedProductDiv.appendChild(heart);
   relatedProductDiv.appendChild(addToBasketBtn);
 
   relatedProductsContainer.appendChild(relatedProductDiv);
 });
+
+productContainer.appendChild(relatedProductsContainer);
+
+// Wishlist funksiyasının dəyişməsi:
+function toggleWishlist(productId, heartElement) {
+  const productIndex = wishlist.findIndex((item) => item.id === productId);
+  if (productIndex === -1) {
+    wishlist.push({ id: productId, title: productId.title, image: productId.image });
+    heartElement.classList.add("fa-solid");
+    heartElement.classList.remove("fa-regular");
+    toast("Product added to wishlist!");
+  } else {
+    wishlist.splice(productIndex, 1);
+    heartElement.classList.remove("fa-solid");
+    heartElement.classList.add("fa-regular");
+    window.location.reload()
+    toast("Product removed from wishlist!");
+  }
+
+  currentUser.wishlist = wishlist;
+  let userIndex = users.findIndex((user) => user.id === currentUser.id);
+  if (userIndex !== -1) {
+    users[userIndex] = currentUser;
+  }
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+// addToBasket funksiyasını yeniləyirik ki, məhsul basket-ə əlavə olunsun və cart səhifəsinə yönləndirilsin
+function addToBasket(productId) {
+  if (!currentUser) {
+    toast("Please log in to add items to your basket.");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+    return;
+  }
+
+  let product = products.find((p) => p.id === productId);
+  if (!product) return;
+
+  let existingProduct = basket.find((item) => item.id === productId);
+  if (existingProduct) {
+    existingProduct.count++;
+  } else {
+    basket.push({
+      ...product,
+      count: 1,
+      totalPrice: product.price,
+    });
+  }
+
+  currentUser.basket = basket;
+  let userIndex = users.findIndex((user) => user.id === currentUser.id);
+  if (userIndex !== -1) {
+    users[userIndex] = currentUser;
+  }
+  localStorage.setItem("users", JSON.stringify(users));
+  toast("Product added to basket!");
+  setTimeout(() => {
+    window.location.href = "basket.html"; // Redirect to basket after adding product
+  }, 1300);
+}
+
 
 productContainer.appendChild(relatedProductsContainer);
 

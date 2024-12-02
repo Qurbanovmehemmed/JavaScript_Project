@@ -135,11 +135,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
   
+
+
     function logout() {
       if (curentUser) {
         curentUser.isLogined = false;
         localStorage.setItem("users", JSON.stringify(users));
         updateUserStatus();
+        
+       
       }
     }
   
@@ -362,6 +366,7 @@ function renderProducts(productsToRender) {
   
         heartElement.classList.remove("fa-solid");
         heartElement.classList.add("fa-regular");
+        window.location.reload()
   
         toast("Product removed from wishlist");
       } else {

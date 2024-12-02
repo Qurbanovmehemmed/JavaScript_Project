@@ -211,6 +211,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       curentUser.isLogined = false;
       localStorage.setItem("users", JSON.stringify(users));
       updateUserStatus();
+       
+       window.location.href = "index.html"; 
     }
   }
 

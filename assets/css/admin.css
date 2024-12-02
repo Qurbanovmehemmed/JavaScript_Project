@@ -9,10 +9,14 @@
   background-color: #ecf0f1;
   padding: 20px;
 }
-
+header{
+  background: #007878;
+  padding: 10px;
+  color: white;
+}
 header h1 {
   font-size: 32px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -99,8 +103,7 @@ table th {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
-}
+background-color: white;}
 .close {
   position: absolute;
   top: 10px;

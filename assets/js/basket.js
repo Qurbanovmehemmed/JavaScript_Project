@@ -60,13 +60,11 @@ function createBasketItem() {
       titlePrice.classList.add("title-price");
       titlePrice.append(title, price);
 
-      // Remove Button
       let removeBtn = document.createElement("button");
       removeBtn.classList.add("btn", "btn-white", "remove-btn");
       removeBtn.textContent = "🗑️ Remove";
       removeBtn.addEventListener("click", () => removeProduct(product.id));
 
-      // Wishlist Button (Heart Icon)
       let wishlistBtn = document.createElement("button");
       wishlistBtn.classList.add("btn", "btn-white", "wishlist-btn");
       let heartIcon = document.createElement("i");
@@ -79,12 +77,12 @@ function createBasketItem() {
         toggleAddWishlist(product.id, heartIcon)
       );
 
-      // Category and Count
+    
       let categoryCount = document.createElement("div");
       categoryCount.classList.add("category-count");
       categoryCount.append(category, countArea);
 
-      // Button Area (Remove and Wishlist buttons)
+     
       let removeBtnArea = document.createElement("div");
       removeBtnArea.classList.add("remove-btn-area");
       removeBtnArea.append(wishlistBtn,removeBtn, );
@@ -95,7 +93,7 @@ function createBasketItem() {
       cardInfo.classList.add("cardInfo");
       cardInfo.append(titlePrice, categoryCount, removeBtnArea);
 
-      // Append elements
+     
       countArea.append(minusBtn, count, plusBtn);
       image.append(img);
       basketItem.append(image, cardInfo);
@@ -172,8 +170,10 @@ function toggleAddWishlist(productId, heartElement) {
       
     });   
   
+    setInterval(()=>{
+      window.location.reload()
+    },1000)
     
-
     toast("Product removed from wishlist");
   } else {
     let product = basket.find((product) => product.id === productId);
@@ -412,6 +412,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       curentUser.isLogined = false;
       localStorage.setItem("users", JSON.stringify(users));
       updateUserStatus();
+      window.location.href = "index.html"; 
     }
   }
 

@@ -125,8 +125,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   function updateUserStatus() {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let isLogined = users.find((user) => user.isLogined === true);
-    let usernameBtn = document.querySelector(".username");
+    let usernameBtn = document.querySelector(".newB");
     if (isLogined) {
+      usernameBtn.textContent = "";
+      
       usernameBtn.textContent = isLogined.username;
       loginBtn.classList.add("d-none");
       registerBtn.classList.add("d-none");
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       logoutBtn.classList.add("d-none");
       loginBtn.classList.remove("d-none");
       registerBtn.classList.remove("d-none");
-      usernameBtn.textContent = "Username";
+      usernameBtn.textContent = "👤 Sign up";
     }
   }
 
@@ -143,6 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (curentUser) {
       curentUser.isLogined = false;
       localStorage.setItem("users", JSON.stringify(users));
+      window.location.reload()
       updateUserStatus();
     }
   }
