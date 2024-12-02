@@ -282,6 +282,16 @@ function renderProducts(productsToRender) {
 
       let ratingStar = document.createElement("span");
       let count = document.createElement("span");
+        // Rating stars
+    let starArea = document.createElement("div");
+    starArea.classList.add("starArea");
+    let star = document.createElement("i");
+    star.classList.add("fa-solid", "fa-star", "starCard");
+
+    for (let i = 0; i < 5; i++) {
+        let starClone = star.cloneNode(true);
+        starArea.appendChild(starClone);
+    }
 
       let heart = document.createElement("i");
       heart.classList.add("far", "fa-heart", "card-heart", "removeCard");
@@ -314,7 +324,7 @@ function renderProducts(productsToRender) {
       cardFooter.append(price, rating);
       cardContent.append(cardTitle, category, cardFooter);
       image.append(img);
-      card.append(heart, image, cardContent, addToCart);
+      card.append(heart, image,starArea, cardContent, addToCart);
       
       let cards = document.querySelector(".cards");
       cards.append(card);

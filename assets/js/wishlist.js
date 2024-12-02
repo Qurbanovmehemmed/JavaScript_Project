@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     removeBtn.classList.add("btn", "btn-light", "remove-btn");
     removeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
     removeBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent the click from triggering the card click event
+        e.stopPropagation(); 
         removeItem(product.id);
     });
 
@@ -42,13 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let star = document.createElement("i");
     star.classList.add("fa-solid", "fa-star", "starCard");
 
-    // Create other stars dynamically
     for (let i = 0; i < 5; i++) {
         let starClone = star.cloneNode(true);
         starArea.appendChild(starClone);
     }
 
-    // Function to remove the item from the wishlist
     function removeItem(productId) {
         let userIndex = users.findIndex((user) => user.id === currentUser.id);
         let productIndex = currentUser.wishList.findIndex(
@@ -65,17 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Append all elements
     cardContent.append(cardTitle, category, price);
     cardFooter.append(removeBtn);
     image.appendChild(img);
     wishlistItem.append( image, starArea, cardContent, cardFooter);
 
-    // Append the card to the wishlist container
     let wishlistContainer = document.querySelector(".wishlist");
     wishlistContainer.appendChild(wishlistItem);
 
-    // Set the content for the elements
     img.src = product.image;
     cardTitle.textContent = product.title.slice(0, 30) + " ...";
     category.textContent = product.category;

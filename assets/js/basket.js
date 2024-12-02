@@ -164,8 +164,13 @@ function toggleAddWishlist(productId, heartElement) {
     heartElement.classList.remove("fa-solid");
     heartElement.classList.add("fa-regular");
     heartElement.style.color="#212121"
-    let favorite =document.querySelectorAll(".favorite")
-    favorite.style.color="#212121"    
+    let favorites = document.querySelectorAll(".favorite");
+    favorites.forEach((favorite) => {
+      if (favorite.productId === productId) {
+        favorite.style.color = "#212121";
+      }
+      
+    });   
   
     
 
@@ -179,8 +184,14 @@ function toggleAddWishlist(productId, heartElement) {
     heartElement.classList.remove("fa-regular");
     heartElement.classList.add("fa-solid");
     heartElement.style.color="#DF4244"
-    let favorite =document.querySelectorAll(".favorite")
-    favorite.style.color="#DF4244"  
+    
+    let favorites = document.querySelectorAll(".favorite");
+    favorites.forEach((favorite) => {
+      if (favorite.productId === productId) {
+        favorite.style.color = "#212121";
+      }
+      
+    });    
           
          
 
