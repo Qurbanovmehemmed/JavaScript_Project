@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         id: id,
         wishList: [],
         basket: [],
+        role: users.length === 0 ? "admin" : "user", 
       };
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));

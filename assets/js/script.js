@@ -21,8 +21,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   let searchInput = document.querySelector(".search-input");
   let searchBtn = document.querySelector(".search-btn");
   let searchResultsList = document.querySelector(".search-results");
+ 
 
-  
+  let adminClass = document.querySelector(".adminClass");
+  if (curentUser && curentUser.role === "admin") {
+    adminClass.style.display = "block"; // Hide the element if the user is an admin
+  }
 
 // !filtereme
   let lowToHighBtn = document.querySelector(".low-to-high");
@@ -142,6 +146,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       updateUserStatus();
     }
   }
+
+
+
 
   logoutBtn.addEventListener("click", logout);
 
@@ -329,6 +336,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
 
   function toggleAddWishlist(productId, heartElement) {
+
     if (!curentUser) {
       toast("Please login to add wishlist");
 
@@ -350,6 +358,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       heartElement.classList.remove("fa-solid");
       heartElement.classList.add("fa-regular");
+
+      //! window lacotaion
+      window.location.reload()
 
       toast("Product removed from wishlist");
     } else {

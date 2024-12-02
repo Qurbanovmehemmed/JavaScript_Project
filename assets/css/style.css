@@ -166,7 +166,6 @@ a {
   align-items: center;
 }
 .search-box{
-  margin-top: 14px;
   width: 504px;
   height: 48px;
   position: relative;
@@ -280,6 +279,9 @@ position: absolute;
   transform: translateY(-50%);
   font-size: 30px;
   cursor: pointer;
+}
+.adminClass{
+  display: none;
 }
 
 .next{
