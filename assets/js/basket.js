@@ -113,6 +113,11 @@ function createBasketItem() {
     });
   }
 
+
+let bottom = document.querySelector(".bottom")
+bottom.appendChild(clearBasketBtn);
+  updateTotalPrice();
+}
   let clearBasketBtn = document.createElement("button");
 clearBasketBtn.classList.add("btn","btn-outline-danger","clearAll");
 clearBasketBtn.textContent = "Clear Basket";
@@ -133,10 +138,6 @@ function clearBasket() {
   localStorage.setItem("users", JSON.stringify(users));
 
   
-  updateTotalPrice();
-}
-let bottom = document.querySelector(".bottom")
-bottom.appendChild(clearBasketBtn);
   updateTotalPrice();
 }
 
@@ -164,9 +165,9 @@ function toggleAddWishlist(productId, heartElement) {
     heartElement.classList.add("fa-regular");
     heartElement.style.color="#212121"
     let favorite =document.querySelectorAll(".favorite")
-    favorite.forEach(element => {
-element.style.color="#212121"      
-    });
+    favorite.style.color="#212121"    
+  
+    
 
     toast("Product removed from wishlist");
   } else {
@@ -179,9 +180,9 @@ element.style.color="#212121"
     heartElement.classList.add("fa-solid");
     heartElement.style.color="#DF4244"
     let favorite =document.querySelectorAll(".favorite")
-    favorite.forEach(element => {
-      element.style.color="#DF4244"      
-          });
+    favorite.style.color="#DF4244"  
+          
+         
 
     toast("Product added to wishlist");
   }
